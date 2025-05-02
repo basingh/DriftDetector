@@ -1,0 +1,25 @@
+[project]
+name = "drift-detector"
+version = "1.0.0"
+description = "A Python CLI application for managing cartography state files and detecting infrastructure drift"
+authors = [
+    {name = "Drift Detector Team"}
+]
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "email-validator>=2.2.0",
+    "flask>=3.1.0",
+    "flask-sqlalchemy>=3.1.1",
+    "gunicorn>=23.0.0",
+    "jsonschema>=4.23.0",
+    "psycopg2-binary>=2.9.10",
+    "pyyaml>=6.0.2",
+]
+
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project.scripts]
+drift-detector = "drift_detector.cli:main"
