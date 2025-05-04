@@ -50,6 +50,33 @@ wheels = [
 ]
 
 [[package]]
+name = "drift-detector"
+version = "1.0.0"
+source = { editable = "." }
+dependencies = [
+    { name = "email-validator" },
+    { name = "flask" },
+    { name = "flask-sqlalchemy" },
+    { name = "gunicorn" },
+    { name = "jsonschema" },
+    { name = "psycopg2-binary" },
+    { name = "python-dotenv" },
+    { name = "pyyaml" },
+]
+
+[package.metadata]
+requires-dist = [
+    { name = "email-validator", specifier = ">=2.2.0" },
+    { name = "flask", specifier = ">=3.1.0" },
+    { name = "flask-sqlalchemy", specifier = ">=3.1.1" },
+    { name = "gunicorn", specifier = ">=23.0.0" },
+    { name = "jsonschema", specifier = ">=4.23.0" },
+    { name = "psycopg2-binary", specifier = ">=2.9.10" },
+    { name = "python-dotenv", specifier = ">=1.1.0" },
+    { name = "pyyaml", specifier = ">=6.0.2" },
+]
+
+[[package]]
 name = "email-validator"
 version = "2.2.0"
 source = { registry = "https://pypi.org/simple" }
@@ -304,6 +331,15 @@ wheels = [
 ]
 
 [[package]]
+name = "python-dotenv"
+version = "1.1.0"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/88/2c/7bb1416c5620485aa793f2de31d3df393d3686aa8a8506d11e10e13c5baf/python_dotenv-1.1.0.tar.gz", hash = "sha256:41f90bc6f5f177fb41f53e87666db362025010eb28f60a01c9143bfa33a2b2d5", size = 39920 }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/1e/18/98a99ad95133c6a6e2005fe89faedf294a748bd5dc803008059409ac9b1e/python_dotenv-1.1.0-py3-none-any.whl", hash = "sha256:d7c01d9e2293916c18baf562d95698754b0dbbb5e74d457c45d4f6561fb9d55d", size = 20256 },
+]
+
+[[package]]
 name = "pyyaml"
 version = "6.0.2"
 source = { registry = "https://pypi.org/simple" }
@@ -350,31 +386,6 @@ dependencies = [
 sdist = { url = "https://files.pythonhosted.org/packages/2f/db/98b5c277be99dd18bfd91dd04e1b759cad18d1a338188c936e92f921c7e2/referencing-0.36.2.tar.gz", hash = "sha256:df2e89862cd09deabbdba16944cc3f10feb6b3e6f18e902f7cc25609a34775aa", size = 74744 }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/c1/b1/3baf80dc6d2b7bc27a95a67752d0208e410351e3feb4eb78de5f77454d8d/referencing-0.36.2-py3-none-any.whl", hash = "sha256:e8699adbbf8b5c7de96d8ffa0eb5c158b3beafce084968e2ea8bb08c6794dcd0", size = 26775 },
-]
-
-[[package]]
-name = "repl-nix-workspace"
-version = "0.1.0"
-source = { virtual = "." }
-dependencies = [
-    { name = "email-validator" },
-    { name = "flask" },
-    { name = "flask-sqlalchemy" },
-    { name = "gunicorn" },
-    { name = "jsonschema" },
-    { name = "psycopg2-binary" },
-    { name = "pyyaml" },
-]
-
-[package.metadata]
-requires-dist = [
-    { name = "email-validator", specifier = ">=2.2.0" },
-    { name = "flask", specifier = ">=3.1.0" },
-    { name = "flask-sqlalchemy", specifier = ">=3.1.1" },
-    { name = "gunicorn", specifier = ">=23.0.0" },
-    { name = "jsonschema", specifier = ">=4.23.0" },
-    { name = "psycopg2-binary", specifier = ">=2.9.10" },
-    { name = "pyyaml", specifier = ">=6.0.2" },
 ]
 
 [[package]]
