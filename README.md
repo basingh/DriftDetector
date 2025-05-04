@@ -48,17 +48,27 @@ python main.py get-drift --path /path/to/base/directory --output drift_report.js
 
 ## Expected Directory Structure
 
+For get-state:
+```
+/path/to/base/directory/
+└── drift-detect-archive/
+    ├── subfolder1/
+    │   ├── [timestamp1].json
+    │   ├── [timestamp2].json
+    │   └── state-archive/
+    │       └── [old_timestamp_files].json
+    └── subfolder2/
+        ├── ...
+```
+
+For get-drift:
 ```
 /path/to/base/directory/
 └── drift-detect/
     ├── subfolder1/
-    │   ├── template.json
-    │   ├── shortcut.json
     │   ├── [timestamp1].json
     │   ├── [timestamp2].json
     │   ├── drift_[identifier].json
-    │   ├── archive/
-    │   │   └── [old_timestamp_files].json
     │   └── drift_archive/
     │       └── [old_drift_files].json
     └── subfolder2/

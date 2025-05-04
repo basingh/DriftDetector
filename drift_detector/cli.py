@@ -47,7 +47,7 @@ def parse_args():
         "--path", 
         type=validate_path,
         required=True,
-        help="Path to the parent directory containing 'drift-detect' folder"
+        help="Path to the parent directory containing 'drift-detect-archive' folder"
     )
     
     # Get-Drift command
