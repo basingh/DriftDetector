@@ -57,33 +57,33 @@ def get_subfolders(drift_detect_archive_path):
     logger.debug(f"Found {len(subfolders)} subfolders in drift-detect-archive")
     return subfolders
 
-def ensure_state_archive_folder(subfolder_path):
+def ensure_state_archive_folder(drift_detect_archive_path):
     """
-    Ensure state-archive folder exists in the subfolder.
+    Ensure state-archive folder exists in the main drift-detect-archive folder.
     
     Args:
-        subfolder_path (str): Path to subfolder
+        drift_detect_archive_path (str): Path to the main drift-detect-archive folder
         
     Returns:
         str: Path to state-archive folder
     """
-    state_archive_path = os.path.join(subfolder_path, "state-archive")
+    state_archive_path = os.path.join(drift_detect_archive_path, "state-archive")
     ensure_directory_exists(state_archive_path)
     logger.debug(f"Ensured state-archive folder exists at {state_archive_path}")
     return state_archive_path
 
-def handle_existing_timestamp_files(subfolder_path, state_archive_path):
+def handle_existing_timestamp_files(drift_detect_archive_path, state_archive_path):
     """
-    Check for existing timestamp files and move older ones to state-archive.
+    Check for existing timestamp files in the main drift-detect-archive folder and move older ones to state-archive.
     
     Args:
-        subfolder_path (str): Path to subfolder
+        drift_detect_archive_path (str): Path to the main drift-detect-archive folder
         state_archive_path (str): Path to state-archive folder
     """
     timestamp_files = []
     
-    for file_name in os.listdir(subfolder_path):
-        file_path = os.path.join(subfolder_path, file_name)
+    for file_name in os.listdir(drift_detect_archive_path):
+        file_path = os.path.join(drift_detect_archive_path, file_name)
         if os.path.isfile(file_path) and is_timestamp_file(file_name):
             timestamp_files.append((file_name, file_path))
     
@@ -153,9 +153,6 @@ def process_subfolder(subfolder_path):
     subfolder_name = os.path.basename(subfolder_path)
     logger.info(f"Processing subfolder: {subfolder_name}")
     
-    state_archive_path = ensure_state_archive_folder(subfolder_path)
-    handle_existing_timestamp_files(subfolder_path, state_archive_path)
-    
     if run_cartography_get_state(subfolder_path):
         new_state_file = check_state_file_created(subfolder_path)
         return new_state_file is not None
@@ -174,6 +171,12 @@ def run_get_state(base_path):
     """
     try:
         drift_detect_archive_path = check_drift_detect_archive_folder(base_path)
+        
+        # First handle the timestamp files in the main drift-detect-archive folder
+        state_archive_path = ensure_state_archive_folder(drift_detect_archive_path)
+        handle_existing_timestamp_files(drift_detect_archive_path, state_archive_path)
+        
+        # Then process subfolders
         subfolders = get_subfolders(drift_detect_archive_path)
         
         if not subfolders:

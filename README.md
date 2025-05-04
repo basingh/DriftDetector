@@ -52,13 +52,14 @@ For get-state:
 ```
 /path/to/base/directory/
 └── drift-detect-archive/
+    ├── [timestamp1].json (timestamp files in main folder)
+    ├── [timestamp2].json
+    ├── state-archive/
+    │   └── [old_timestamp_files].json
     ├── subfolder1/
-    │   ├── [timestamp1].json
-    │   ├── [timestamp2].json
-    │   └── state-archive/
-    │       └── [old_timestamp_files].json
+    │   └── (processed by cartography get-state)
     └── subfolder2/
-        ├── ...
+        └── ...
 ```
 
 For get-drift:
